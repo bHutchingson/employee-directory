@@ -9,14 +9,14 @@ const EmployeeTable = () => {
   }, []);
 
 
-  loadEmployees = () => {
+  const loadEmployees = () => {
     API.getEmployee()
-      .then(res =>
-      res.map((employee) => {
-        return (
-
-        )
-      }))
+      .then((res) => {
+        const employees = res.data.results;
+        setEmployeeState(employees);
+        console.log(employees);
+      })
+      .catch(err => console.error(err));
   }
 
   return (
