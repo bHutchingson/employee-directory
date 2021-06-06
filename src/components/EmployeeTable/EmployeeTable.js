@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
+import EmployeeInfo from "../EmployeeInfo/EmployeeInfo";
 
-const EmployeeTable = () => {
-  const [employeeState, setEmployeeState] = useState('');
+
+const EmployeeTable = (props) => { 
+  const [employeeState, setEmployeeState] = useState([]);
 
   useEffect (() => {
     loadEmployees();
@@ -12,16 +14,15 @@ const EmployeeTable = () => {
   const loadEmployees = () => {
     API.getEmployee()
       .then((res) => {
-        const employees = res.data.results;
-        setEmployeeState(employees);
-        console.log(employees);
+        const allEmployees = res.data.results;
+        console.log("all employees employeeTable", allEmployees)
+        setEmployeeState(allEmployees);
       })
       .catch(err => console.error(err));
   }
-
   return (
     <div>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">Image</th>
@@ -32,28 +33,7 @@ const EmployeeTable = () => {
           </tr>
         </thead>
         <tbody>
-
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>420-420-6969</td>
-            <td>@mdo</td>
-            <td>69-69-6969</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>420-420-6969</td>
-            <td>@fat</td>
-            <td>69-69-6969</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>420-420-6969</td>
-            <td>@twitter</td>
-            <td>69-69-6969</td>
-          </tr>
+          <EmployeeInfo employeeState={employeeState}/>
         </tbody>
       </table>
     </div>

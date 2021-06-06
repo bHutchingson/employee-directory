@@ -6,9 +6,9 @@ const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("")
 
   return (
-    <div class="input-group">
-      <div class="form-outline">
-        <input type="search" id="form1" placeholder="Search" class="form-control" />
+    <div className="input-group">
+      <div className="form-outline">
+        <input type="search" id="form1" placeholder="Search" className="form-control" />
       </div>
     </div>
   );
