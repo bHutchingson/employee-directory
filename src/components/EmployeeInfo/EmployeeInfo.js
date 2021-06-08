@@ -6,7 +6,7 @@ const EmployeeInfo = (props) => {
   console.log("EmployeeInfo employees", employees)
   return (
       employees.map((employee) =>
-        <tr key={employee.id.value}>
+        <tr key={employee.id.value || employee.name.first}>
           <th scope="row"><img alt={employee.name.first} src={employee.picture.thumbnail}></img></th>
           <td>{employee.name.first} {employee.name.last}</td>
           <td>{employee.phone}</td>

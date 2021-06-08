@@ -4,65 +4,57 @@ import EmployeeInfo from "../EmployeeInfo/EmployeeInfo";
 import SearchBar from "../SearchBar/SearchBar";
 
 
-const EmployeeTable = (props) => { 
+const EmployeeTable = () => {
   const [employeeState, setEmployeeState] = useState([]);
-  const [searchValue, setSearchValue] = useState("")
+  const [filteredState, setFilteredState] = useState([]);
+  
 
-  console.log(props.searchValue);
-  useEffect (() => {
+  //get users from api on page load
+  useEffect(() => {
     loadEmployees();
   }, []);
 
-  /* useEffect (() => {
-    filterSearch();
-  }, [searchValue]); */
-
-  const loadEmployees = () => {
-    API.getEmployee()
-      .then((res) => {
-        setEmployeeState(res.data.results)
-        /* const employeeSearch = res.data.results.filter((employee) => {
-          return employee.includes(props.searchValue);
-        }) */
-        /* const allEmployees = res.data.results;
-        console.log("all employees employeeTable", allEmployees)
-        setEmployeeState(allEmployees); */
-      })
-      /* .then((res) => {
-        allEmployees.filter((employee) => {
-          return employee.includes(props.searchValue);
-        })
-      }) */
-      .catch(err => console.error(err));
-  }
-  console.log(employeeState)
-  const filterSearch = () => {
-    const newSearch = employeeState;
-    console.log(newSearch)
-    setEmployeeState(newSearch.filter((employee) => {
-      const newEmployee = Object.values(employee.name);
-      console.log(newEmployee)
-      return newEmployee.includes(props.searchValue);
+  //handle input change in searchbar
+  const handleSearch = (term) => {
+    setFilteredState(employeeState.filter((employee) => {
+      return employee.name.first.toLowerCase().includes(term.toLowerCase())
     }))
   }
 
-  const handleChange = (e) => {
-    setSearchValue(e.target.value)
+
+  //initialize let
+  let allEmployees;
+
+  //load employees from user api
+  const loadEmployees = () => {
+    API.getEmployee()
+      .then((res) => {
+        allEmployees = res.data.results;
+        setFilteredState(allEmployees);
+        setEmployeeState(allEmployees)
+        console.log(allEmployees)
+      })
+      .catch(err => console.error(err));
   }
+
+  /* const employeeNames = employeeState.map((employee) => {
+    return employee.name.first;
+  })
+
+  console.log(employeeNames)
+
+  console.log(employeeState)
   
+  const filteredEmployees = employeeState.filter((employee) => {
+    return employee.name.first.includes(searchValue)
+  })
   
-  /* const filteredEmployees = employeeState.filter((employee) => {
-    console.log(employee)
-    return employee.includes(props.searchValue)
-  }) */
+
+  setEmployeeState(filteredEmployees); */
 
   return (
     <div>
-      <div className="input-group">
-        <div className="form-outline">
-          <input type="search" value={searchValue} id="form1" onChange={handleChange} placeholder="Search" className="form-control" />
-        </div>
-      </div>
+      <SearchBar handleSearch={handleSearch}/>
       <table className="table">
         <thead>
           <tr>
@@ -74,7 +66,7 @@ const EmployeeTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          <EmployeeInfo employeeState={employeeState} />
+          <EmployeeInfo employeeState={filteredState} />
         </tbody>
       </table>
     </div>
