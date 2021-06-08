@@ -3,12 +3,12 @@ import { useState } from "react";
 import EmployeeTable from "../EmployeeTable/EmployeeTable";
 
 
+
 const SearchBar = (props) => {
   const [searchValue, setSearchValue] = useState("")
 
   const handleChange = (e) => {
     setSearchValue(e.target.value)
-    console.log(searchValue)
   }
   
 
