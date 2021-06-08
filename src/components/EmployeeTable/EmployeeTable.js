@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import EmployeeInfo from "../EmployeeInfo/EmployeeInfo";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 const EmployeeTable = (props) => { 

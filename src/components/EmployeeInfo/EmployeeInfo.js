@@ -17,36 +17,6 @@ const EmployeeInfo = (props) => {
       )
 
   )
-  /* return(
-    employees.map((employee) => {
-      return(
-        <tr key={employee.name}>
-          <th scope="row"><image src='{employee.picture.thumbnail}'></image></th>
-          <td>{employee.name}</td>
-          <td>{employee.phone}</td>
-          <td>{employee.email}</td>
-          <td>{employee.dob}</td>
-        </tr>
-      )
-    })
-  ) */
-  /* if (props.length > 0) {
-    return(
-      props.map((employee) => {
-        return(
-          <tr key={employee.name}>
-            <th scope="row"><image src='{employee.picture.thumbnail}'></image></th>
-            <td>{employee.name}</td>
-            <td>{employee.phone}</td>
-            <td>{employee.email}</td>
-            <td>{employee.dob}</td>
-          </tr>
-        )
-      })
-    )
-  } else {
-    return(<h1>Loading</h1>);
-  } */
 
 }
 

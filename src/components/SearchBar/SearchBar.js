@@ -1,14 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import EmployeeTable from "../EmployeeTable/EmployeeTable";
 
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [searchValue, setSearchValue] = useState("")
+
+  const handleChange = (e) => {
+    setSearchValue(e.target.value)
+    console.log(searchValue)
+  }
+  
+
+  /* const filteredEmployees = employees.filter((employee) => {
+    return employee.included(searchValue)
+  }) */
+
 
   return (
     <div className="input-group">
       <div className="form-outline">
-        <input type="search" id="form1" placeholder="Search" className="form-control" />
+        <input type="search" value={searchValue} id="form1" onChange={handleChange} placeholder="Search" className="form-control" />
       </div>
     </div>
   );
