@@ -17,7 +17,11 @@ const EmployeeTable = () => {
   //handle input change in searchbar
   const handleSearch = (term) => {
     setFilteredState(employeeState.filter((employee) => {
-      return employee.name.first.toLowerCase().includes(term.toLowerCase())
+      return employee.name.first.toLowerCase().includes(term.toLowerCase()) ||
+      employee.name.last.toLowerCase().includes(term.toLowerCase()) ||
+      employee.phone.toLowerCase().includes(term.toLowerCase()) ||
+      employee.email.toLowerCase().includes(term.toLowerCase()) ||
+      employee.dob.date.toLowerCase().includes(term.toLowerCase())
     }))
   }
 
