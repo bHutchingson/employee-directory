@@ -3,7 +3,7 @@ import React from "react";
 
 const EmployeeInfo = (props) => {
   const employees = props.employeeState;
-  console.log("EmployeeInfo employees", employees)
+
   return (
       employees.map((employee) =>
         <tr key={employee.id.value || employee.name.first}>
@@ -11,7 +11,7 @@ const EmployeeInfo = (props) => {
           <td>{employee.name.first} {employee.name.last}</td>
           <td>{employee.phone}</td>
           <td>{employee.email}</td>
-          <td>{employee.dob.date}</td>
+          <td>{employee.location.country}</td>
         </tr>
 
       )

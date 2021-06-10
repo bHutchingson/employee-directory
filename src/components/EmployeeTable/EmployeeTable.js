@@ -4,6 +4,7 @@ import EmployeeInfo from "../EmployeeInfo/EmployeeInfo";
 import SearchBar from "../SearchBar/SearchBar";
 
 
+
 const EmployeeTable = () => {
   const [employeeState, setEmployeeState] = useState([]);
   const [filteredState, setFilteredState] = useState([]);
@@ -21,7 +22,7 @@ const EmployeeTable = () => {
       employee.name.last.toLowerCase().includes(term.toLowerCase()) ||
       employee.phone.toLowerCase().includes(term.toLowerCase()) ||
       employee.email.toLowerCase().includes(term.toLowerCase()) ||
-      employee.dob.date.toLowerCase().includes(term.toLowerCase())
+      employee.location.country.toLowerCase().includes(term.toLowerCase())
     }))
   }
 
@@ -36,37 +37,21 @@ const EmployeeTable = () => {
         allEmployees = res.data.results;
         setFilteredState(allEmployees);
         setEmployeeState(allEmployees)
-        console.log(allEmployees)
       })
       .catch(err => console.error(err));
   }
 
-  /* const employeeNames = employeeState.map((employee) => {
-    return employee.name.first;
-  })
-
-  console.log(employeeNames)
-
-  console.log(employeeState)
-  
-  const filteredEmployees = employeeState.filter((employee) => {
-    return employee.name.first.includes(searchValue)
-  })
-  
-
-  setEmployeeState(filteredEmployees); */
-
   return (
     <div>
       <SearchBar handleSearch={handleSearch}/>
-      <table className="table">
+      <table style={{width: "80%", margin: "auto" }} className="table">
         <thead>
           <tr>
             <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
-            <th scope="col">DOB</th>
+            <th scope="col">Country</th>
           </tr>
         </thead>
         <tbody>
