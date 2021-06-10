@@ -1,5 +1,14 @@
 # REACT-EmployeeDirectory
 
+## Table of Contents
+
+  - [Description](#description)
+  - [Technologies](#technologies)
+  - [Table of Contents](#table-of-contents)
+  - [Screenshot](#screenshot)
+  - [Deployment](#deployment)
+  - [Contributing](#contributing)
+
 ## Description
 
 A searchable table of users, using the RandomUser API. Created with React.js
@@ -12,16 +21,6 @@ A searchable table of users, using the RandomUser API. Created with React.js
   - create-react-app
   - axios
   - bootstrap
-
-
-## Table of Contents
-
-  - [Description](#description)
-  - [Technologies](#technologies)
-  - [Table of Contents](#table-of-contents)
-  - [Screenshot](#screenshot)
-  - [Deployment](#deployment)
-  - [Contributing](#contributing)
 
 ## Screenshot
 
